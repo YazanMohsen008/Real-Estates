@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Parameters</title>
+    <style>
+
+        .button {
+            padding: 5px 20px;
+            background: #2da499;
+            color: white;
+            border-radius: 4px;
+            border-color: #549999;
+            text-align: center;
+            font-size: large;
+            display: block;
+        }
+
+        .add-button {
+            padding: 5px 20px;
+            background: #2da499;
+            color: white;
+            border-radius: 4px;
+            border-color: #549999;
+            text-align: center;
+            display: block;
+            width: 100%;
+            font-size: large;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            text-align: center;
+        }
+
+        .field {
+            padding: 10px;
+        }
+
+        .input-field {
+            border-radius: 5px;
+            display: block;
+            border-color: #0000ff22;
+            width: 80%;
+            padding: 10px;
+        }
+
+        .input-form {
+            border-radius: 5px;
+            display: block;
+            border-color: #0000ff22;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px 0;
+        }
+
+        label {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: x-large;
+            width: 100%;
+            text-align: start;
+            display: block;
+        }
+
+        .form {
+            width: 25%;
+            background: #f6f8fa77;
+            padding: 40px;
+            border-color: #e9ecf0;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+        }
+
+
+        h1 {
+            color: #24292f;
+            font-size: xx-large;
+            font-weight: normal;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            height: 500px;
+        }
+
+        .item {
+            width: 100%;
+            margin-top: 50px;
+            height: 40%;
+
+        }
+
+        a {
+            text-decoration: none;
+            display: inline;
+            color: black;
+        }
+
+        #table {
+            width: 50%;
+            padding: 20px;
+            margin-left: 10px;
+
+        }
+        table{
+            background: #f6f8fa77;
+            font-size: x-large;
+            border-color: #e9ecf0;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        body {
+            background-image:url("http://localhost:63342/internet-application-project/static/estate.jpg");
+            background-size: cover;
+            height: 1080px;
+            margin: 0;
+        }
+        .h1 {
+            color: white;
+            text-align: center;
+            font-size: xx-large;
+            background: #24292f77;
+            margin: 0;
+            padding: 10px;
+        }
+        .add-button.button:hover {
+            background: #2da49999;
+        }
+        th{
+            font-weight: normal;
+            color: #24292f;
+        }
+    </style>
+</head>
+<body>
+<h1 class="h1">Parameters Settings </h1>
+<div class="container">
+    <div id="table" class="item center">
+        <table >
+            <tr>
+                <th colspan="5"> Name</th>
+                <th colspan="5">Value</th>
+                <th colspan="5"></th>
+                <th colspan="5"></th>
+            </tr>
+            <tr th:each="parameter: ${parameters}">
+                <div>
+                    <form method="GET"
+                          th:action="@{'/'+${@environment.getProperty('spring.application.name')}+'/parameter/update'}"
+                          th:object="${parameter}">
+                        <td colspan="5" class="field" id="key"><input class="input-field" name="key" type="text"
+                                                                      th:value="${parameter.key}"/>
+                        </td>
+                        <td colspan="5" class="field" id="value"><input class="input-field" name="value" type="text"
+                                                                        th:value="${parameter.value}"/></td>
+                        <td colspan="5" class="field">
+                            <div><a class="button" th:href="@{'delete/' + ${parameter.key}}">Delete</a></div>
+                        </td>
+                        <td colspan="5" class="field">
+                            <div><input class="button" name="Add" value="Update" type="submit"/></div>
+                        </td>
+                    </form>
+                </div>
+            </tr>
+        </table>
+    </div>
+    <div class="item center">
+        <form method="post" class="form center"
+              th:action="@{'/'+${@environment.getProperty('spring.application.name')}+'/parameter/add'}"
+              th:object="${parameter}">
+            <h1>Add Parameter</h1>
+            <div><label>Key <input class="input-form" name="key" required/> </label></div>
+            <div><label>Value <input class="input-form " name="value" required/> </label></div>
+            <div><input class="add-button" name="Add" value="Add" type="submit" id="add"/></div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

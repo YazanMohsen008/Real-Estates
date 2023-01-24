@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <style>
+
+        .button {
+            padding: 10px 40px;
+            background: #2da499;
+            color: white;
+            border-radius: 4px;
+            border-color: #549999;
+            width: 100%;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            text-align: center;
+        }
+
+        input {
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 10px 0;
+            border-radius: 5px;
+            border-color: #0000ff22;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: xx-large;
+            width: 100%;
+            text-align: start;
+            display: block;
+        }
+
+        form {
+            width: 25%;
+            background: #f6f8fa77;
+            padding: 40px;
+            border-color: #e9ecf0;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+
+        }
+
+        .container {
+            margin-top: 200px;
+        }
+
+        h1 {
+            color: #24292f;
+            font-size: x-large;
+            font-weight: normal;
+        }
+
+        .alert {
+            color: red;
+            font-size: 20px;
+            text-align: start;
+            margin-bottom: 10px;
+        }
+
+        body {
+            background-image:url("http://localhost:63342/internet-application-project/static/estate.jpg");
+            background-size: cover;
+            height: 1080px;
+            margin: 0;
+        }
+        .button:hover {
+            background: #2da49999;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: xx-large;
+            background: #24292f77;
+            margin: 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+        <h1>Sign in to Estate Application</h1>
+<div class="container">
+
+    <form action="authenticate" method="post" th:object="${user}" class="center">
+        <div>
+
+            <div th:if="${error}!=null" class="alert">
+                Invalid username or password.
+            </div>
+            <div><label> Username</label></div>
+            <div><input id="username" name="username" value="" required></div>
+        </div>
+        <div>
+            <div><label> Password </label></div>
+            <div><input id="password" name="password" value="" required></div>
+        </div>
+        <div><input class="button center" type="submit" id="login" value="Sign in"></div>
+    </form>
+</div>
+</body>
+</html>

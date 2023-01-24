@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+
+
+        input {
+            margin-top: 15px;
+            margin-left: 15px;
+        }
+
+        .button {
+            padding: 10px;
+            color: white;
+        }
+
+        form {
+            width: fit-content;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline;
+            color: black;
+        }
+
+        .container {
+            background-image:url("http://localhost:63342/internet-application-project/static/estate.jpg");
+            background-size: cover;
+            height: 1080px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: xx-large;
+            background: #24292f77;
+            margin: 0;
+            padding: 10px;
+        }
+        .nav-bar{
+            color: white;
+            font-size: x-large;
+            background: #24292f77;
+            margin: 0;
+            padding: 10px;
+        }
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="container">
+
+<h1>Welcome To Estate Community </h1>
+<div class="nav-bar">
+    <!--    TODO : CHECK FOR LOGGED IN USER-->
+    <a class="button" th:href="@{'/'+${@environment.getProperty('spring.application.name')}+'/login'}"> Login </a>
+    <a class="button" th:href="@{'/'+${@environment.getProperty('spring.application.name')}+'/email/sendEmailPage'}">
+        Send An Email </a>
+    <a class="button" th:href="@{'/'+${@environment.getProperty('spring.application.name')}+'/estate/addEstatePage'}">
+        Add Estate </a>
+    <a class="button" th:href="@{'/'+${@environment.getProperty('spring.application.name')}+'/estate/getEstatePage'}">
+        All Estates </a>
+    <a class="button"
+       th:href="@{'/'+${@environment.getProperty('spring.application.name')}+'/estate/unSelledEstatesPage'}"> UnSelled
+        Estates </a>
+    <a class="button"
+       th:href="@{'/'+${@environment.getProperty('spring.application.name')}+'/parameter/getParameterPage'}">
+        Parameters</a>
+    <a class="button" th:href="@{'/'+${@environment.getProperty('spring.application.name')}+'/logoutUser'}"> logout</a>
+</div>
+</body>
+
+
+</html>

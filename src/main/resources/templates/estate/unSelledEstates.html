@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>unSelled Estates</title>
+    <style>
+
+        .button {
+            padding: 5px 20px;
+            background: #2da499;
+            color: white;
+            border-radius: 4px;
+            border-color: #549999;
+            text-align: center;
+            display: block;
+        }
+
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            text-align: center;
+        }
+
+
+        label {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: large;
+
+            width: 100%;
+            text-align: start;
+            display: block;
+        }
+
+
+        th, h1 {
+            color: #24292f;
+            font-size: x-large;
+            font-weight: normal;
+        }
+
+        table, tbody {
+            width: 100%;
+        }
+
+
+        .alert {
+            color: red;
+            font-size: 20px;
+            text-align: start;
+            margin-bottom: 10px;
+        }
+        td{
+            text-align: center;
+
+        } body {
+                      background-image:url("http://localhost:63342/internet-application-project/static/estate.jpg");
+              background-size: cover;
+              height: 1080px;
+              margin: 0;
+          }
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: xx-large;
+            background: #24292f77;
+            margin: 0;
+            padding: 10px;
+        }
+        table{
+            background: #f6f8fa55;
+            padding: 10px;
+        }
+        .button:hover {
+            background: #2da49999;
+        }
+    </style>
+
+
+</head>
+<body>
+<div th:if="${error}!=null" class="alert">
+    another operation was happened on This Estate, please re-send your request
+</div>
+<h1 >Estates </h1>
+
+<table>
+    <tr>
+        <th colspan="5">Name</th>
+        <th colspan="5">Sale Price</th>
+        <th colspan="5">Sale Date</th>
+        <th colspan="5">Buyer Name</th>
+        <th colspan="5"></th>
+    </tr>
+    <div>
+        <tr th:each="estate: ${estates}">
+            <form method="post" action="sell" th:object="${estate}" class="form center">
+                <input name="id" type="hidden" th:value="${estate.id}"/>
+                <input name="version" type="hidden" th:value="${estate.version}"/>
+                <div>
+                    <td colspan="5"  id="name" th:text="${estate.name}"></td>
+                    <td colspan="5"><th:block th:with="result=${ProfitRatio}*${estate.price} "><input name="salePrice" th:value="${result}"/></th:block></td>
+                    <td colspan="5"><input name="saleDate" type="date"/></td>
+                    <td colspan="5"><input name="buyerName"/></td>
+                    <td colspan="5"><button class="button" value="Sell" name="Sell" type="submit">Sell</button></td>
+                </div>
+            </form>
+
+        </tr>
+    </div>
+</table>
+
+</body>
+</html>

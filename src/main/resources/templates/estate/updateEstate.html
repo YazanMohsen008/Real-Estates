@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Estate</title>
+    <style>
+
+        .button {
+            padding: 5px 20px;
+            background: #2da499;
+            color: white;
+            border-radius: 4px;
+            border-color: #549999;
+            text-align: center;
+            display: block;
+            width: 100%;
+            font-size: x-large;
+        }
+        .button:hover {
+            background: #2da49999;
+        }
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            text-align: center;
+        }
+
+
+        input {
+            border-radius: 5px;
+            display: block;
+            border-color: #0000ff22;
+            width: 100%;
+            margin-top: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        label {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: xx-large;
+            color: #24292f;
+            width: 100%;
+            text-align: start;
+            display: block;
+        }
+
+        .form {
+            width: 25%;
+            background: #f6f8fa77;
+            padding: 40px;
+            border-color: #e9ecf0;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+
+        h1 {
+            color: #24292f;
+            font-size: x-large;
+            font-weight: normal;
+        }
+        body {
+            background-image:url("http://localhost:63342/internet-application-project/static/estate.jpg");
+            background-size: cover;
+            height: 1080px;
+            margin: 0;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: xx-large;
+            background: #24292f77;
+            margin: 0;
+            padding: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+<h1 class="h1">Update Estate </h1>
+
+<form method="post" th:action="@{'/'+${@environment.getProperty('spring.application.name')}+'/estate/update'}" th:object="${estate}" class="form center">
+    <input id="id" name="id" type="hidden" th:value="${estate.id}"/>
+    <div><label>Name <input id="Name" name="Name" th:value="${estate.name}" required/> </label></div>
+    <div><label>Price <input id="Price" name="Price" th:value="${estate.price}" required/> </label></div>
+    <div><label>Stocks Count <input id="StocksCount" name="StocksCount" th:value="${estate.stocksCount}" required/>
+    </label></div>
+    <div><label>Sale Date <input id="SaleDate" name="SaleDate" th:value="${estate.saleDate}" type="date"/> </label>
+    </div>
+    <div><label>Sale Price <input id="SalePrice" name="SalePrice" th:value="${estate.salePrice}"/> </label></div>
+    <div><label>Buyer Name <input id="BuyerName" name="BuyerName" th:value="${estate.buyerName}"/> </label></div>
+    <div><input class="button" id="update" name="update" value="Update" type="submit"/></div>
+</form>
+</body>
+
+
+</html>

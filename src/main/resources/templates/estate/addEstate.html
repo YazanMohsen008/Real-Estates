@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Estate</title>
+    <style>
+
+        .button {
+            padding: 5px 20px;
+            background: #2da499;
+            color: white;
+            border-radius: 4px;
+            border-color: #549999;
+            text-align: center;
+            display: block;
+            width: 100%;
+            font-size: large;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            text-align: center;
+        }
+
+
+        input {
+            border-radius: 5px;
+            display: block;
+            border-color: #0000ff22;
+            width: 100%;
+            margin-top: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        label {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: xx-large;
+            width: 100%;
+            text-align: start;
+            color: #24292f;
+            display: block;
+        }
+        .button:hover {
+            background: #2da49999;
+        }
+        .form {
+            width: 25%;
+            background: #f6f8fa77;
+            padding: 40px;
+            border-color: #e9ecf0;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+
+        h1 {
+            color: #24292f;
+            font-size: x-large;
+            font-weight: normal;
+        }
+
+        body {
+            background-image:url("http://localhost:63342/internet-application-project/static/estate.jpg");
+            background-size: cover;
+            height: 1080px;
+            margin: 0;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: xx-large;
+            background: #24292f77;
+            margin: 0;
+            padding: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+<h1 >Add Estate </h1>
+<form method="post" action="add" th:object="${estate}" class="center form">
+    <div><label>NAME <input id="name" name="name" required/> </label></div>
+    <div><label>Price <input id="price" name="price" required/> </label></div>
+    <div><label>Stocks Count <input id="stockCount" name="stocksCount" th:value="${stockCount}" required/> </label></div>
+    <div><input class="button" name="Add" value="Add" type="submit" id="add"/></div>
+</form>
+</body>
+</html>
